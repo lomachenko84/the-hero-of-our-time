@@ -1,11 +1,27 @@
-// TODO: write code here
+import goblin from "../img/goblin.png"
+let field = document.createElement("div")
+field.className = "field"
+document.body.append(field)
+let myFields = []
+let index = Math.floor(Math.random() * 15)
 
-// comment this to pass build
-const unusedVariable = "variable";
-
-// for demonstration purpose only
-export default function demo(value) {
-  return `Demo: ${value}`;
+for (let i = 0; i < 16; i++) {
+  let myField = document.createElement("div")
+  myField.className = "myField"
+  field.append(myField)
+  myFields.push(myField)
 }
 
-console.log("app.js included");
+let img = document.createElement("img")
+img.src = goblin
+img.className = "img"
+myFields[index].append(img)
+
+setInterval(() => {
+  let newIndex;
+  do {
+    newIndex = Math.floor(Math.random() * 15)
+  } while (newIndex === index);
+  index = newIndex
+  myFields[newIndex].append(img)
+}, 2000)
